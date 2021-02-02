@@ -138,7 +138,9 @@ def flipkart(product):
     elem1.submit()
     driver.implicitly_wait(50)
     elem2 = driver.find_element_by_partial_link_text(product)
-    elem2.click()
+    # driver.implicitly_wait(50)
+    #elem2.click()
+    driver.execute_script("arguments[0].click();", elem2)
     # newURl = driver.window_handles[0]
      # Getting current URL 
     driver.implicitly_wait(50)
@@ -163,8 +165,9 @@ def flipkart(product):
   
     # Printing the URL 
     print(get_url) 
-    pn=driver.find_element_by_id("productTitle")
-    price = driver.find_element_by_id("priceblock_ourprice")
+    pn=driver.find_element_by_class_name("B_NuCI")
+    # pn = driver.find_element_by_xpath("/html/body/div[1]/div/div[3]/div[1]/div[2]/div[2]/div/div[1]/h1/span[2]")
+    price = driver.find_element_by_class_name("_30jeq3 _16Jk6d")
 
     print("\n--------Name----\n")
     print(pn.get_attribute('innerHTML'))
